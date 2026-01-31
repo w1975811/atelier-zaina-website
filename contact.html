@@ -32,30 +32,28 @@
   <main class="container">
     <section class="hero">
       <h1>Contact</h1>
-      <p>
-        For availability, quotes, or custom requests, send an enquiry using the form below.
-        (Prototype: this will open your email app using mailto.)
-      </p>
+      <p>For availability, quotes, or custom requests, send an enquiry using the form below.</p>
     </section>
 
     <section class="card">
       <h2>Send an Enquiry</h2>
 
-      <form id="enquiryForm" class="form">
+      <!-- IMPORTANT: no action="" because we handle submit with JS fetch -->
+      <form id="contactForm" class="form" novalidate>
         <div class="form-grid">
           <div class="field">
-            <label for="fullName">Full Name</label>
-            <input id="fullName" name="fullName" type="text" required />
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
           </div>
 
           <div class="field">
             <label for="email">Email Address</label>
-            <input id="email" name="email" type="email" required />
+            <input id="email" name="email" type="email" autocomplete="email" required>
           </div>
 
           <div class="field">
-            <label for="eventDate">Event Date (optional)</label>
-            <input id="eventDate" name="eventDate" type="date" />
+            <label for="date">Event Date (optional)</label>
+            <input id="date" name="date" type="date">
           </div>
 
           <div class="field field-full">
@@ -67,11 +65,10 @@
         <button type="submit">Send Enquiry</button>
 
         <p class="note">
-          Note: This prototype does not store customer data in a database.
-          Enquiries are sent via email using mailto.
+          Note: This prototype sends enquiries via a server-side script when hosted (e.g., university server).
         </p>
 
-        <p id="statusMsg" class="status" aria-live="polite"></p>
+        <p id="formStatus" class="status" aria-live="polite"></p>
       </form>
     </section>
   </main>
@@ -90,44 +87,40 @@
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Mailto form behaviour
-    const form = document.getElementById("enquiryForm");
-    const statusMsg = document.getElementById("statusMsg");
+    // Contact form submit (NO MAILTO)
+    const form = document.getElementById("contactForm");
+    const statusMsg = document.getElementById("formStatus");
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      statusMsg.textContent = "Opening your email app to send your enquiry…";
+      // Basic browser validation message (optional)
+      if (!form.checkValidity()) {
+        statusMsg.textContent = "Please fill in all required fields.";
+        return;
+      }
 
-      const fullName = document.getElementById("fullName").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const eventDate = document.getElementById("eventDate").value;
-      const message = document.getElementById("message").value.trim();
+      statusMsg.textContent = "Sending your enquiry…";
 
-      const to = "atelierzaina@outlook.com";
-      const subject = `Website enquiry from ${fullName}`;
+      const formData = new FormData(form);
 
-      const bodyLines = [
-        "Hello Atelier Zaina,",
-        "",
-        "New enquiry received via the website:",
-        "",
-        `Name: ${fullName}`,
-        `Email: ${email}`,
-        `Event date: ${eventDate ? eventDate : "Not provided"}`,
-        "",
-        "Message:",
-        message,
-        "",
-        "— Sent from Atelier Zaina website"
-      ];
+      try {
+        const res = await fetch("send_enquiry.php", {
+          method: "POST",
+          body: formData
+        });
 
-      const body = encodeURIComponent(bodyLines.join("\n"));
-      const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+        const text = await res.text();
 
-      setTimeout(() => {
-        window.location.href = mailtoLink;
-      }, 400);
+        if (res.ok && text.trim() === "OK") {
+          form.reset();
+          statusMsg.textContent = "Your enquiry has been sent successfully.";
+        } else {
+          statusMsg.textContent = "Something went wrong. Please try again.";
+        }
+      } catch (err) {
+        statusMsg.textContent = "Network/server error. This will work once hosted on the university server.";
+      }
     });
   </script>
 </body>
