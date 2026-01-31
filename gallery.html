@@ -3,53 +3,120 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Gallery | Atelier Zaina</title>
+  <title>Gallery | Atelier Zaina</title>
+
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/png" href="images/logo.png">
-<link rel="apple-touch-icon" href="images/logo.png">
+  <link rel="apple-touch-icon" href="images/logo.png">
 </head>
+
 <body>
   <header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="index.html">
-      <img src="images/logo.png" alt="Atelier Zaina logo" class="logo" />
-      <span class="brand-name">Atelier Zaina</span>
-    </a>
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="images/logo.png" alt="Atelier Zaina logo" class="logo" />
+        <span class="brand-name">Atelier Zaina</span>
+      </a>
+
       <nav class="nav">
-        <a href="index.html" >Home</a>
+        <a href="index.html">Home</a>
         <a href="gallery.html" class="active">Gallery</a>
-        <a href="services.html">Services & Pricing</a>
+        <a href="services.html">Services &amp; Pricing</a>
         <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-  <section class="hero">
-    <h1>Gallery</h1>
-    <p>Browse backdrop styles and previous setups. (Prototype: placeholder images for now.)</p>
-  </section>
+    <section class="hero">
+      <h1>Gallery</h1>
+      <p>Browse our backdrop themes and previous setups.</p>
+    </section>
 
-  <section class="grid gallery-grid">
-    <div class="card">
-      <h2>Backdrop A</h2>
-      <div class="img-placeholder">Image</div>
-      <p>Short description (e.g., white floral wall, neutral theme).</p>
-    </div>
+    <!-- Big 4-column gallery grid -->
+    <section class="gallery-grid" id="galleryGrid">
 
-    <div class="card">
-      <h2>Backdrop B</h2>
-      <div class="img-placeholder">Image</div>
-      <p>Short description (e.g., warm tones, modern arch).</p>
-    </div>
+      <figure class="gallery-item">
+        <img src="images/mint-theme1.jpeg" alt="Mint theme backdrop 1" loading="lazy">
+        <figcaption>Mint Theme</figcaption>
+      </figure>
 
-    <div class="card">
-      <h2>Backdrop C</h2>
-      <div class="img-placeholder">Image</div>
-      <p>Short description (e.g., luxury drapes, spotlight setup).</p>
-    </div>
-  </section>
-</main>
+      <figure class="gallery-item">
+        <img src="images/mint-theme2.jpeg" alt="Mint theme backdrop 2" loading="lazy">
+        <figcaption>Mint Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/mint-theme3.jpeg" alt="Mint theme backdrop 1" loading="lazy">
+        <figcaption>Mint Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/neutral-theme1.jpeg" alt="Neutral theme backdrop 1" loading="lazy">
+        <figcaption>Neutral Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/neutral-theme2.jpeg" alt="Neutral theme backdrop 2" loading="lazy">
+        <figcaption>Neutral Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/neutral-theme3.jpeg" alt="Neutral theme backdrop 3" loading="lazy">
+        <figcaption>Neutral Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/pink-theme1.jpeg" alt="Pink theme backdrop 1" loading="lazy">
+        <figcaption>Pink Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/pink-theme2.jpeg" alt="Pink theme backdrop 2" loading="lazy">
+        <figcaption>Pink Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/pink-theme3.jpeg" alt="Pink theme backdrop 3" loading="lazy">
+        <figcaption>Pink Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/green-theme1.jpeg" alt="Green theme backdrop 1" loading="lazy">
+        <figcaption>Green Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/green-theme2.jpeg" alt="Green theme backdrop 2" loading="lazy">
+        <figcaption>Green Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/green-theme3.jpeg" alt="Green theme backdrop 3" loading="lazy">
+        <figcaption>Green Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/green-theme4.jpeg" alt="Green theme backdrop 4" loading="lazy">
+        <figcaption>Green Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/red-theme1.jpeg" alt="Red theme backdrop 1" loading="lazy">
+        <figcaption>Red Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/red-theme2.jpeg" alt="Red theme backdrop 2" loading="lazy">
+        <figcaption>Red Theme</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/red-theme3.jpeg" alt="Red theme backdrop 3" loading="lazy">
+        <figcaption>Red Theme</figcaption>
+      </figure>
+    </section>
+  </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
@@ -62,7 +129,19 @@
   </footer>
 
   <script>
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Randomise gallery order on each page load
+    const grid = document.getElementById("galleryGrid");
+    const items = Array.from(grid.children);
+
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+
+    items.forEach(item => grid.appendChild(item));
   </script>
 </body>
 </html>
