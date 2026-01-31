@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gallery | Atelier Zaina</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Atelier Zaina</a>
+      <nav class="nav">
+        <a href="index.html" >Home</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a href="services.html">Services & Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+  <section class="hero">
+    <h1>Gallery</h1>
+    <p>Browse backdrop styles and previous setups. (Prototype: placeholder images for now.)</p>
+  </section>
+
+  <section class="grid gallery-grid">
+    <div class="card">
+      <h2>Backdrop A</h2>
+      <div class="img-placeholder">Image</div>
+      <p>Short description (e.g., white floral wall, neutral theme).</p>
+    </div>
+
+    <div class="card">
+      <h2>Backdrop B</h2>
+      <div class="img-placeholder">Image</div>
+      <p>Short description (e.g., warm tones, modern arch).</p>
+    </div>
+
+    <div class="card">
+      <h2>Backdrop C</h2>
+      <div class="img-placeholder">Image</div>
+      <p>Short description (e.g., luxury drapes, spotlight setup).</p>
+    </div>
+  </section>
+</main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Atelier Zaina</p>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/atelierzaina/" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.tiktok.com/@atelierzaina?_r=1&_t=ZS-931LFTQy2N7" target="_blank" rel="noreferrer">TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

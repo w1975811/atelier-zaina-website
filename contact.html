@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact | Atelier Zaina</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Atelier Zaina</a>
+      <nav class="nav">
+        <a href="index.html" >Home</a>
+        <a href="gallery.html" >Gallery</a>
+        <a href="services.html">Services & Pricing</a>
+        <a href="contact.html"class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+  <section class="hero">
+    <h1>Contact</h1>
+    <p>
+      For availability, quotes, or custom requests, send an enquiry using the form below.
+      (Prototype: this will open your email using mailto.)
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Send an Enquiry</h2>
+
+        <form id="enquiryForm" class="enquiry-form">
+    <label>
+        Full Name
+        <input id="fullName" name="fullName" type="text" required />
+    </label>
+
+    <label>
+        Email Address
+        <input id="email" name="email" type="email" required />
+    </label>
+
+    <label>
+        Event Date (optional)
+        <input id="eventDate" name="eventDate" type="date" />
+    </label>
+
+    <label>
+        Message
+        <textarea id="message" name="message" rows="5" required></textarea>
+    </label>
+
+    <button type="submit" class="btn">Send Enquiry</button>
+    </form>
+
+    <p class="small">
+      Note: This prototype does not store customer data in a database.
+      Enquiries are sent via email using mailto.
+    </p>
+  </section>
+</main>
+
+
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Atelier Zaina</p>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/atelierzaina/" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.tiktok.com/@atelierzaina?_r=1&_t=ZS-931LFTQy2N7" target="_blank" rel="noreferrer">TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+<script>
+  const form = document.getElementById("enquiryForm");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const eventDate = document.getElementById("eventDate").value;
+    const message = document.getElementById("message").value.trim();
+
+    const to = "atelierzaina@outlook.com";
+    const subject = `Website enquiry from ${fullName}`;
+
+    const bodyLines = [
+      "Hello Atelier Zaina,",
+      "",
+      "New enquiry received via the website:",
+      "",
+      `Name: ${fullName}`,
+      `Email: ${email}`,
+      `Event date: ${eventDate ? eventDate : "Not provided"}`,
+      "",
+      "Message:",
+      message,
+      "",
+      "— Sent from Atelier Zaina website"
+    ];
+
+    const body = encodeURIComponent(bodyLines.join("\n"));
+    const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+    window.location.href = mailtoLink;
+  });
+</script>
+
+</body>
+</html>
