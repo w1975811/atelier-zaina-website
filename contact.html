@@ -3,66 +3,78 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Contact | Atelier Zaina</title>
+  <title>Contact | Atelier Zaina</title>
+
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Tab icon (favicon) -->
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="apple-touch-icon" href="images/logo.png">
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html">Atelier Zaina</a>
+      <a class="brand" href="index.html">
+        <img src="images/logo.png" alt="Atelier Zaina logo" class="logo" />
+        <span class="brand-name">Atelier Zaina</span>
+      </a>
+
       <nav class="nav">
-        <a href="index.html" >Home</a>
-        <a href="gallery.html" >Gallery</a>
-        <a href="services.html">Services & Pricing</a>
-        <a href="contact.html"class="active">Contact</a>
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="services.html">Services &amp; Pricing</a>
+        <a href="contact.html" class="active">Contact</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-  <section class="hero">
-    <h1>Contact</h1>
-    <p>
-      For availability, quotes, or custom requests, send an enquiry using the form below.
-      (Prototype: this will open your email using mailto.)
-    </p>
-  </section>
+    <section class="hero">
+      <h1>Contact</h1>
+      <p>
+        For availability, quotes, or custom requests, send an enquiry using the form below.
+        (Prototype: this will open your email app using mailto.)
+      </p>
+    </section>
 
-  <section class="card">
-    <h2>Send an Enquiry</h2>
+    <section class="card">
+      <h2>Send an Enquiry</h2>
 
-        <form id="enquiryForm" class="enquiry-form">
-    <label>
-        Full Name
-        <input id="fullName" name="fullName" type="text" required />
-    </label>
+      <form id="enquiryForm" class="form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="fullName">Full Name</label>
+            <input id="fullName" name="fullName" type="text" required />
+          </div>
 
-    <label>
-        Email Address
-        <input id="email" name="email" type="email" required />
-    </label>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" required />
+          </div>
 
-    <label>
-        Event Date (optional)
-        <input id="eventDate" name="eventDate" type="date" />
-    </label>
+          <div class="field">
+            <label for="eventDate">Event Date (optional)</label>
+            <input id="eventDate" name="eventDate" type="date" />
+          </div>
 
-    <label>
-        Message
-        <textarea id="message" name="message" rows="5" required></textarea>
-    </label>
+          <div class="field field-full">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+        </div>
 
-    <button type="submit" class="btn">Send Enquiry</button>
-    </form>
+        <button type="submit">Send Enquiry</button>
 
-    <p class="small">
-      Note: This prototype does not store customer data in a database.
-      Enquiries are sent via email using mailto.
-    </p>
-  </section>
-</main>
+        <p class="note">
+          Note: This prototype does not store customer data in a database.
+          Enquiries are sent via email using mailto.
+        </p>
 
-
+        <p id="statusMsg" class="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
@@ -75,44 +87,48 @@
   </footer>
 
   <script>
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mailto form behaviour
+    const form = document.getElementById("enquiryForm");
+    const statusMsg = document.getElementById("statusMsg");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      statusMsg.textContent = "Opening your email app to send your enquiry…";
+
+      const fullName = document.getElementById("fullName").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const eventDate = document.getElementById("eventDate").value;
+      const message = document.getElementById("message").value.trim();
+
+      const to = "atelierzaina@outlook.com";
+      const subject = `Website enquiry from ${fullName}`;
+
+      const bodyLines = [
+        "Hello Atelier Zaina,",
+        "",
+        "New enquiry received via the website:",
+        "",
+        `Name: ${fullName}`,
+        `Email: ${email}`,
+        `Event date: ${eventDate ? eventDate : "Not provided"}`,
+        "",
+        "Message:",
+        message,
+        "",
+        "— Sent from Atelier Zaina website"
+      ];
+
+      const body = encodeURIComponent(bodyLines.join("\n"));
+      const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+      setTimeout(() => {
+        window.location.href = mailtoLink;
+      }, 400);
+    });
   </script>
-
-<script>
-  const form = document.getElementById("enquiryForm");
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const fullName = document.getElementById("fullName").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const eventDate = document.getElementById("eventDate").value;
-    const message = document.getElementById("message").value.trim();
-
-    const to = "atelierzaina@outlook.com";
-    const subject = `Website enquiry from ${fullName}`;
-
-    const bodyLines = [
-      "Hello Atelier Zaina,",
-      "",
-      "New enquiry received via the website:",
-      "",
-      `Name: ${fullName}`,
-      `Email: ${email}`,
-      `Event date: ${eventDate ? eventDate : "Not provided"}`,
-      "",
-      "Message:",
-      message,
-      "",
-      "— Sent from Atelier Zaina website"
-    ];
-
-    const body = encodeURIComponent(bodyLines.join("\n"));
-    const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
-
-    window.location.href = mailtoLink;
-  });
-</script>
-
 </body>
 </html>
