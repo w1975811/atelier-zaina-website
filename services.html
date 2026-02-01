@@ -3,76 +3,112 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Services & Pricing | Atelier Zaina</title>
+  <title>Services & Pricing | Atelier Zaina</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/png" href="images/logo.png">
-<link rel="apple-touch-icon" href="images/logo.png">
+  <link rel="apple-touch-icon" href="images/logo.png">
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
-    <a class="brand" href="index.html">
-      <img src="images/logo.png" alt="Atelier Zaina logo" class="logo" />
-      <span class="brand-name">Atelier Zaina</span>
-    </a>
+      <a class="brand" href="index.html">
+        <img src="images/logo.png" alt="Atelier Zaina logo" class="logo" />
+        <span class="brand-name">Atelier Zaina</span>
+      </a>
       <nav class="nav">
-        <a href="index.html" >Home</a>
-        <a href="gallery.html" >Gallery</a>
-        <a href="services.html" class="active">Services & Pricing</a>
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="services.html" class="active">Services &amp; Pricing</a>
         <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-  <section class="hero">
-    <h1>Services & Pricing</h1>
-    <p>Clear packages to help customers understand what’s included before enquiring.</p>
-  </section>
+  <!-- WIDE container so it fills the page more -->
+  <main class="container-wide">
+    <section class="hero hero-wide">
+      <h1>Services &amp; Pricing</h1>
+      <p>
+        Hear you can find the packages we offer. You are able to see what is included in each package. Once you submit a query we will provide you with a price tailored to your needs.
+      </p>
+    </section>
 
-  <section class="grid">
-    <div class="card">
-      <h2>Basic Package</h2>
-      <p><strong>From £___</strong></p>
-      <ul>
-        <li>Backdrop hire (standard)</li>
-        <li>Setup & takedown</li>
-        <li>Suitable for small events</li>
+    <!-- BIG cards -->
+    <section class="pricing-grid">
+      <!-- BASIC -->
+      <article class="pricing-card">
+        <h2>Basic Package</h2>
+
+        <img
+          src="images/red-theme1.jpeg"
+          alt="Backdrop example"
+          class="pricing-img"
+          loading="lazy"
+        />
+
+        <p class="pricing-sub">Bespoke pricing</p>
+
+        <ul class="pricing-list">
+          <li>Backdrop hire (standard)</li>
+          <li>Setup &amp; takedown</li>
+          <li>Suitable for small events</li>
+        </ul>
+      </article>
+
+      <!-- STANDARD -->
+      <article class="pricing-card">
+        <h2>Standard Package</h2>
+
+        <img
+          src="images/mint-theme2.jpeg"
+          alt="Backdrop example"
+          class="pricing-img"
+          loading="lazy"
+        />
+
+        <p class="pricing-sub">Bespoke pricing</p>
+
+        <ul class="pricing-list">
+          <li>Backdrop hire (choice of styles)</li>
+          <li>Setup &amp; styling</li>
+          <li>Optional add-ons</li>
+        </ul>
+      </article>
+
+      <!-- PREMIUM -->
+      <article class="pricing-card pricing-card-featured">
+        <h2>Premium Package</h2>
+
+        <img
+          src="images/neutral-theme1.jpeg"
+          alt="Backdrop example"
+          class="pricing-img"
+          loading="lazy"
+        />
+
+        <p class="pricing-sub">Bespoke pricing</p>
+
+        <ul class="pricing-list">
+          <li>Luxury backdrop &amp; styling</li>
+          <li>Customisation options</li>
+          <li>Best for weddings</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="addons-card">
+      <h2>Add-ons</h2>
+      <ul class="pricing-list">
+        <li>Personalised signage</li>
+        <li>Extra florals</li>
+        <li>Lighting upgrades</li>
       </ul>
-    </div>
-
-    <div class="card">
-      <h2>Standard Package</h2>
-      <p><strong>From £___</strong></p>
-      <ul>
-        <li>Backdrop hire (choice of styles)</li>
-        <li>Setup & styling</li>
-        <li>Optional add-ons</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Premium Package</h2>
-      <p><strong>From £___</strong></p>
-      <ul>
-        <li>Luxury backdrop + styling</li>
-        <li>Customisation options</li>
-        <li>Best for weddings</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>Add-ons (Optional)</h2>
-    <ul>
-      <li>Personalised signage</li>
-      <li>Extra florals</li>
-      <li>Lighting upgrades</li>
-    </ul>
-    <p><a href="contact.html">Send an enquiry</a> for availability and a final quote.</p>
-  </section>
-</main>
-
+      <p>
+        <a href="contact.html">Send an enquiry</a> for availability and a final quote.
+      </p>
+    </section>
+  </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
