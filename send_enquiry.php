@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     http_response_code(405);
     echo "Invalid request";
@@ -26,17 +29,24 @@ $to = "atelierzaina@outlook.com";
 $subject = "New website enquiry from $name";
 
 $body =
-"New enquiry received:\n\n" .
-"Name: $name\n" .
-"Email: $email\n" .
-"Event date: " . ($date ?: "Not provided") . "\n\n" .
-"Message:\n$message\n";
+    "New enquiry received:\n\n" .
+    "Name: $name\n" .
+    "Email: $email\n" .
+    "Event date: " . ($date ?: "Not provided") . "\n\n" .
+    "Message:\n$message\n";
 
-$headers = "From: $email";
+$headers = [];
+$headers[] = "MIME-Version: 1.0";
+$headers[] = "Content-type: text/plain; charset=UTF-8";
+$headers[] = "From: Atelier Zaina <no-reply@atelierzaina.com>";
+$headers[] = "Reply-To: $email";
 
-if (mail($to, $subject, $body, $headers)) {
+$success = mail($to, $subject, $body, implode("\r\n", $headers));
+
+if ($success) {
     echo "OK";
 } else {
     http_response_code(500);
     echo "Failed to send email";
 }
+?>

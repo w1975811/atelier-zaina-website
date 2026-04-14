@@ -1,16 +1,15 @@
 :root{
-  --bg: #ffffff;
-  --text: #111111;
+  --bg: #fbf8f6;           /* softer warm cream */
+  --text: #3f3328;         /* warm dark brown */
 
-  /* Atelier Zaina palette */
-  --brand: #a29278;        /* gold/taupe */
-  --brand-dark: #6f644f;   /* darker taupe for hover */
-  --brand-soft: #f2d9dc;   /* blush pink */
-  --brand-soft-2: #e1cdc8; /* slightly deeper blush */
+  --brand: #9a896e;        /* gold/taupe */
+  --brand-dark: #6f644f;   /* darker taupe */
+  --brand-soft: #f3e3e6;   /* blush pink */
+  --brand-soft-2: #ead7d9; /* slightly deeper blush */
 
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --card: #ffffff;
+  --muted: #6a5e53;
+  --border: #dfd2cb;
+  --card: #ffffff;         /* keep cards white */
   --radius: 14px;
 }
 
@@ -44,8 +43,8 @@ a:hover{ color: var(--brand-dark); }
 .site-header{
   position: sticky;
   top: 0;
-  background: #fff;
-  border-bottom: 1px solid var(--border);
+  background: var(--brand);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
   z-index: 1000;
 }
 
@@ -64,7 +63,7 @@ a:hover{ color: var(--brand-dark); }
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  color: inherit;
+  color: #fff;
 }
 
 .logo{
@@ -80,6 +79,7 @@ a:hover{ color: var(--brand-dark); }
   font-weight: 800;
   font-size: 18px;
   letter-spacing: 0.2px;
+  color: #fff;
 }
 
 /* Nav */
@@ -93,27 +93,32 @@ a:hover{ color: var(--brand-dark); }
   text-decoration: none;
   padding: 9px 12px;
   border-radius: 12px;
-  color: #111;
+  color: #fff;
   font-weight: 600;
 }
 
 .nav a.active{
-  background: var(--brand-soft);
-  color: var(--brand-dark);
+  background: rgba(255,255,255,0.22);
+  color: #fff;
   font-weight: 800;
+}
+
+.nav a:hover{
+  background: rgba(255,255,255,0.14);
 }
 
 /* Buttons */
 .button, button, .btn-primary{
   display: inline-block;
-  padding: 12px 18px;
+  padding: 12px 20px;
   border-radius: 999px;
-  background: var(--brand);
+  background: #8a7a60;
   color: #fff;
   text-decoration: none;
   border: none;
   font-weight: 700;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(111, 100, 79, 0.15);
 }
 
 .button:hover, button:hover, .btn-primary:hover{
@@ -132,17 +137,24 @@ a:hover{ color: var(--brand-dark); }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px;
-  background: var(--card);
+  background: #fffdfd;
+  box-shadow: 0 8px 30px rgba(111, 100, 79, 0.08);
 }
 
 .card h2{ margin-top: 0; }
 
 /* Footer */
 .site-footer{
-  border-top: 1px solid var(--border);
-  padding: 10px 0;
+  background: var(--brand);
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding: 14px 0;
   font-size: 14px;
-  color: var(--muted);
+  color: #fff;
+}
+
+.site-footer p,
+.site-footer a{
+  color: #fff;
 }
 
 .footer-inner{
@@ -166,21 +178,22 @@ a:hover{ color: var(--brand-dark); }
   grid-template-columns: 1.1fr 1fr;
   gap: 60px;
   align-items: center;
-  background: #faf3f5;
+  background: #f7ecee;
   padding: 80px 60px;
   border-radius: 32px;
-  margin: 40px 0 70px;
+  margin: 50px 0 80px;
 }
 
 .hero-content h1{
   font-size: 44px;
   line-height: 1.2;
   margin: 0 0 16px;
+  color: #3a2f25;
 }
 
 .hero-content p{
   font-size: 18px;
-  color: #555;
+  color: var(--muted);
   max-width: 520px;
   margin: 0 0 28px;
 }
@@ -190,13 +203,14 @@ a:hover{ color: var(--brand-dark); }
   height: 420px;
   border-radius: 24px;
   object-fit: cover;
+  filter: contrast(1.03) saturate(1.05);
 }
 
 .section-soft{
-  background: #faf3f5;
+  background: #f7ecee;
   border-radius: 32px;
   padding: 60px 40px;
-  margin: 70px 0;
+  margin: 80px 0;
 }
 
 .about{
@@ -213,7 +227,7 @@ a:hover{ color: var(--brand-dark); }
 
 .about p{
   font-size: 17px;
-  color: #666;
+  color: var(--muted);
   line-height: 1.7;
   margin: 0;
 }
@@ -228,11 +242,12 @@ a:hover{ color: var(--brand-dark); }
 .home-card{
   border: 1px solid var(--border);
   border-radius: 22px;
-  background: #fff;
+  background: #fffdfd;
   padding: 22px;
   text-decoration: none;
   color: inherit;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 30px rgba(111, 100, 79, 0.08);
 }
 
 .home-card:hover{
@@ -246,6 +261,7 @@ a:hover{ color: var(--brand-dark); }
   object-fit: cover;
   border-radius: 16px;
   margin-bottom: 16px;
+  filter: contrast(1.03) saturate(1.05);
 }
 
 .home-card h2{
@@ -255,7 +271,7 @@ a:hover{ color: var(--brand-dark); }
 
 .home-card p{
   margin: 0 0 12px;
-  color: #666;
+  color: var(--muted);
   line-height: 1.5;
 }
 
@@ -283,7 +299,7 @@ a:hover{ color: var(--brand-dark); }
 
 .cta p{
   margin: 0;
-  color: #666;
+  color: var(--muted);
   line-height: 1.6;
   max-width: 700px;
 }
@@ -306,6 +322,7 @@ a:hover{ color: var(--brand-dark); }
   object-fit: cover;
   border-radius: 14px;
   transition: transform 0.3s ease;
+  filter: contrast(1.03) saturate(1.05);
 }
 
 .gallery-item:hover img{
@@ -338,9 +355,9 @@ a:hover{ color: var(--brand-dark); }
 .pricing-card{
   border: 1px solid var(--border);
   border-radius: 22px;
-  background: #fff;
+  background: #fffdfd;
   padding: 26px;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  box-shadow: 0 8px 30px rgba(111, 100, 79, 0.08);
 }
 
 .pricing-card h2{
@@ -356,6 +373,7 @@ a:hover{ color: var(--brand-dark); }
   display: block;
   border: 1px solid var(--border);
   margin: 0 0 16px;
+  filter: contrast(1.03) saturate(1.05);
 }
 
 .pricing-sub{
@@ -381,10 +399,11 @@ a:hover{ color: var(--brand-dark); }
 .addons-card{
   border: 1px solid var(--border);
   border-radius: 22px;
-  background: #fff;
+  background: #fffdfd;
   padding: 28px;
   max-width: 980px;
   margin: 0 auto 60px;
+  box-shadow: 0 8px 30px rgba(111, 100, 79, 0.08);
 }
 
 /* -----------------------------
@@ -412,6 +431,8 @@ input, textarea{
   border-radius: 12px;
   padding: 10px 12px;
   font-size: 15px;
+  background: #fff;
+  color: var(--text);
 }
 
 .note{
@@ -427,24 +448,25 @@ input, textarea{
 
 /* Contact page intro box alignment */
 .contact-hero{
-  background: #faf3f5;
+  background: #f7ecee;
   border-radius: 32px;
   padding: 60px;
   margin: 40px 0 40px;
   display: grid;
   grid-template-columns: 260px 1fr;
-  align-items: center;      /* this centers vertically */
+  align-items: center;
   gap: 40px;
 }
 
 .contact-hero h1{
   margin: 0;
   font-size: 44px;
+  color: #3a2f25;
 }
 
 .contact-hero p{
   margin: 0;
-  color: #555;
+  color: var(--muted);
   max-width: 60ch;
 }
 
