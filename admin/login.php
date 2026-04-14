@@ -72,6 +72,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>© <span id="year"></span> Atelier Zaina</p>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/atelierzaina/" target="_blank">
+  <img src="../images/instagram.png" alt="Instagram" class="social-icon">
+</a>
+
+<a href="https://www.tiktok.com/@atelierzaina" target="_blank">
+  <img src="../images/tiktok.png" alt="TikTok" class="social-icon tiktok-icon">
+</a>
+      </div>
     </div>
   </footer>
 
