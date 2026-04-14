@@ -2,51 +2,58 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// Only allow POST requests
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     http_response_code(405);
     echo "Invalid request";
     exit;
 }
 
-$name = trim($_POST["name"] ?? "");
-$email = trim($_POST["email"] ?? "");
-$date = trim($_POST["date"] ?? "");
-$message = trim($_POST["message"] ?? "");
+// DATABASE CONNECTION
+$host = "localhost";
+$dbname = "atelbkcg_enquiries";
+$username = "atelbkcg_atelier_admin";
+$password = "28DcN@2LyjWpC5j";
 
-if ($name === "" || $email === "" || $message === "") {
+$conn = new mysqli($host, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    http_response_code(500);
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// GET FORM DATA
+$name = $_POST['name'] ?? '';
+$email = $_POST['email'] ?? '';
+$event_date = $_POST['date'] ?? null;   // matches your contact form
+$message = $_POST['message'] ?? '';
+
+// Basic validation
+if (trim($name) === '' || trim($email) === '' || trim($message) === '') {
     http_response_code(400);
     echo "Missing required fields";
     exit;
 }
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400);
-    echo "Invalid email";
-    exit;
+// Prepare SQL
+$sql = "INSERT INTO enquiries (name, email, event_date, message) VALUES (?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+
+if (!$stmt) {
+    http_response_code(500);
+    die("Prepare failed: " . $conn->error);
 }
 
-$to = "atelierzaina@outlook.com";
-$subject = "New website enquiry from $name";
+$stmt->bind_param("ssss", $name, $email, $event_date, $message);
 
-$body =
-    "New enquiry received:\n\n" .
-    "Name: $name\n" .
-    "Email: $email\n" .
-    "Event date: " . ($date ?: "Not provided") . "\n\n" .
-    "Message:\n$message\n";
-
-$headers = [];
-$headers[] = "MIME-Version: 1.0";
-$headers[] = "Content-type: text/plain; charset=UTF-8";
-$headers[] = "From: Atelier Zaina <no-reply@atelierzaina.com>";
-$headers[] = "Reply-To: $email";
-
-$success = mail($to, $subject, $body, implode("\r\n", $headers));
-
-if ($success) {
+if ($stmt->execute()) {
     echo "OK";
 } else {
     http_response_code(500);
-    echo "Failed to send email";
+    echo "Execute failed: " . $stmt->error;
 }
+
+$stmt->close();
+$conn->close();
 ?>
