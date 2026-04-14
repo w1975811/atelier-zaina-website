@@ -240,6 +240,34 @@ a:hover{ color: var(--brand-dark); }
   filter: contrast(1.03) saturate(1.05);
 }
 
+/* Inner page hero (gallery, services) — single column, full width */
+.page-hero{
+  background: #f7ecee;
+  border-radius: 32px;
+  padding: 60px;
+  margin: 50px 0 40px;
+  display: block;
+  width: 100%;
+}
+
+.page-hero h1{
+  font-size: 44px;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  color: #3a2f25;
+}
+
+.page-hero p{
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+
+.page-hero p:last-child{
+  margin-bottom: 0;
+}
+
 .section-soft{
   background: #f7ecee;
   border-radius: 32px;
