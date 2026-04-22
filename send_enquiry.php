@@ -26,7 +26,7 @@ if ($conn->connect_error) {
 // GET FORM DATA
 $name = $_POST['name'] ?? '';
 $email = $_POST['email'] ?? '';
-$event_date = $_POST['date'] ?? null;   // matches your contact form
+$event_date = $_POST['date'] ?? null;   // matches my contact form
 $message = $_POST['message'] ?? '';
 
 // Basic validation

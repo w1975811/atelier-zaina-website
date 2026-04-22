@@ -17,7 +17,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, name, email, event_date, message, created_at FROM enquiries ORDER BY created_at DESC";
+$sql = "SELECT id, name, email, event_date, message, 
+created_at FROM enquiries ORDER BY created_at DESC";
 $result = $conn->query($sql);
 ?>
 <!doctype html>

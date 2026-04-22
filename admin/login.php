@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    // Simple hardcoded admin login for the project
+    // Simple hardcoded admin login for this project
     $adminUser = 'admin';
     $adminPass = 'AtelierZaina2026!';
 
