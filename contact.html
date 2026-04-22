@@ -98,7 +98,7 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      // Basic browser validation message (optional)
+      // Basic browser validation message
       if (!form.checkValidity()) {
         statusMsg.textContent = "Please fill in all required fields.";
         return;
@@ -123,7 +123,7 @@
           statusMsg.textContent = "Something went wrong. Please try again.";
         }
       } catch (err) {
-        statusMsg.textContent = "Network/server error. This will work once hosted on the university server.";
+        statusMsg.textContent = "Network/server error.";
       }
     });
   </script>
